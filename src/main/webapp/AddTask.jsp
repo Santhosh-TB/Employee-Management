@@ -8,8 +8,9 @@
 
 <style>
 body{
-background: rgb(237,253,29);
-background: linear-gradient(90deg, rgba(237,253,29,1) 1%, rgba(0,9,254,1) 100%);
+background-image: url("orange cup.jpg");
+background-repeat: no-repeat;
+background-size: cover;
 	}
 	div{
 		width: 450px;

@@ -8,8 +8,9 @@
 
 <style>
 	body{
-		background: rgb(29,253,32);
-background: linear-gradient(90deg, rgba(29,253,32,1) 22%, rgba(0,227,254,1) 100%);
+		background-image: url("black phone.jpg");
+background-repeat: no-repeat;
+background-size: cover;
 	}
 	div{
 		width: 450px;

@@ -12,7 +12,9 @@
 
 <style>
 body{
-background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+background-image: url("orange cup.jpg");
+background-repeat: no-repeat;
+background-size: cover;
 }
 div{
 border-radius: 25px;
@@ -62,7 +64,7 @@ color: white;
 
 <body>
 
-<h1 style="text-align: center; color: white">Welcome To The Home Page</h1>
+<h1 style="text-align: center; color: white;">Welcome To The Home Page</h1>
 <br><br>
 
 <% HttpSession ses = request.getSession(); 
@@ -89,12 +91,18 @@ color: white;
 	
 	<% List<TaskDto> tasks = (List)request.getAttribute("tasks"); %>
 
+
+
+<% if (!tasks.isEmpty())
+{
+for(TaskDto task:tasks)
+{ %>
 <table>
 <thead>
 <tr>
 <th>ID</th>
 <th>Title</th>
-<th>Desription</th>
+<th>Description</th>
 <th>Priority</th>
 <th>Due-date</th>
 <th>Status</th>
@@ -102,9 +110,6 @@ color: white;
 </thead>
 
 <tbody>
-
-<% for(TaskDto task:tasks)
-{ %>
 	<tr>
 	<td> <%= task.getTaskid() %></td>
 	<td> <%= task.getTasktitle() %></td>
@@ -115,7 +120,13 @@ color: white;
     </tr>
     
     <%
-    } %>
+    } }
+else
+{%>
+	
+	<h1 style="color: red;">No Tasks Available </h1>
+<% }
+%>
 </tbody>
 </table>
 	

@@ -26,7 +26,7 @@ public class Dao
 	
 	public static int saveUser(Dto user) throws ClassNotFoundException, SQLException 
 	{
-		Connection con = Dao.getConnection();
+		Connection con = getConnection();
 		
 		PreparedStatement pst = con.prepareStatement("insert into user values(?,?,?,?,?,?)");
 		
@@ -45,7 +45,7 @@ public class Dao
 	
 	public Dto findByEmail (String email) throws ClassNotFoundException, SQLException
 	{
-		Connection con = Dao.getConnection();
+		Connection con = getConnection();
 		PreparedStatement pst = con.prepareStatement("Select * from user where useremail = ?");
 		pst.setString(1, email);
 		

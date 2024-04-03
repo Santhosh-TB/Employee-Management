@@ -9,8 +9,9 @@
 <style>
 
 body{
-		background: rgb(29,56,253);
-background: linear-gradient(90deg, rgba(29,56,253,1) 1%, rgba(254,0,133,1) 100%);
+		background-image: url("orange cup.jpg");
+background-repeat: no-repeat;
+background-size: cover;
 	}
 div{
 		width: 450px;
