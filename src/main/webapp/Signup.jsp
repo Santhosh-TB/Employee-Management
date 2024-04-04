@@ -29,20 +29,18 @@ background-size: cover;
 button{
 border-style: none;
 text-decoration: none;
-color: Black;
 padding: 10px;
 border-style: none;
 border-radius: 2pc;
 padding-left: 20px;
 padding-right: 20px;
-background: rgb(29,253,32);
-background: linear-gradient(90deg, rgba(0,227,254,1) 22%, rgba(29,253,32,1) 100%);
 font-weight: bold;
+background-color: blue;
+color: white;
 }
 button:hover{
 transform: scale(1.5, 1.5);
 transition: 0.5s;
-color: white;
 }
 </style>
 

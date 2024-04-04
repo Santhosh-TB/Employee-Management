@@ -126,5 +126,21 @@ public class Dao
 		int res = pst.executeUpdate();
 		return res;	
 	}
+	
+	public int updateTask(TaskDto task) throws ClassNotFoundException, SQLException
+	{ 
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("update task set taskdescription = ?, taskpriority = ?, taskduedate = ?, taskstatus =? where userid =?");
+
+		pst.setString(1, task.getTaskdescription());
+		pst.setString(2, task.getTaskpriority());
+		pst.setString(3, task.getTaskduedate());
+		pst.setString(4, task.getTaskstatus());
+		pst.setInt(5, task.getUserid());
+		
+		int res = pst.executeUpdate();
+		return res;
+	
+	}	
 
 }

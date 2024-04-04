@@ -27,20 +27,18 @@ h1,form{
 button{
 border-style: none;
 text-decoration: none;
-color: Black;
 padding: 10px;
 border-style: none;
 border-radius: 2pc;
 padding-left: 20px;
 padding-right: 20px;
-background: rgb(29,56,253);
-background: linear-gradient(90deg, rgba(254,0,133,1) 1%, rgba(29,56,253,1) 100%);
+background-color: blue;
+color: white;
 font-weight: bold;
 }
 button:hover{
 transform: scale(1.5, 1.5);
 transition: 0.5s;
-color: white;
 }
 
 </style>

@@ -40,7 +40,7 @@ a:hover{
 transition: 0.5s;
 transform: scale(1.2, 1.2);
 color: white;
-background-color: black;
+background-color: blue;
 }
 #delete:hover{
 transition: 0.5s;
@@ -133,7 +133,7 @@ for(TaskDto task:tasks)
 	<td> <%= task.getTaskstatus() %></td>
 	
 	<td> <a id="delete" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
-	<td> <a id="edit" href="##"> Edit</a> </td>
+	<td> <a id="edit" href="UpdateTask.jsp"> Edit</a> </td>
     </tr>
     
     <%
