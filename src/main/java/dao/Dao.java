@@ -112,6 +112,19 @@ public class Dao
 		}
 		
 		return tasks;
-	}	
+	}
+	
+	
+	public static int deleteTask(int taskid) throws ClassNotFoundException, SQLException 
+	{
+		Connection con = getConnection();
+		
+		PreparedStatement pst = con.prepareStatement("delete from task where taskid = ?");
+		
+		pst.setInt(1, taskid);
+        
+		int res = pst.executeUpdate();
+		return res;	
+	}
 
 }

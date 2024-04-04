@@ -42,6 +42,16 @@ transform: scale(1.2, 1.2);
 color: white;
 background-color: black;
 }
+#delete:hover{
+transition: 0.5s;
+transform: scale(1.2, 1.2);
+background-color: red;
+}
+#edit:hover{
+transition: 0.5s;
+transform: scale(1.2, 1.2);
+background-color: darkgreen;
+}
 
 table,th,td {
 	border: 2px solid black;
@@ -55,6 +65,7 @@ th{
 padding-left: 40px;
 padding-right: 40px;
 background-color: #009878;
+font-size:large;
 color: white;
 }
 </style>
@@ -64,8 +75,8 @@ color: white;
 
 <body>
 
-<h1 style="text-align: center; color: white;">Welcome To The Home Page</h1>
-<br><br>
+<h1 style="text-align: center; font-size: 50px; ">Welcome To The User Page</h1>
+<br>
 
 <% HttpSession ses = request.getSession(); 
   Dto user = (Dto)ses.getAttribute("Dto");
@@ -94,8 +105,6 @@ color: white;
 
 
 <% if (!tasks.isEmpty())
-{
-for(TaskDto task:tasks)
 { %>
 <table>
 <thead>
@@ -106,8 +115,13 @@ for(TaskDto task:tasks)
 <th>Priority</th>
 <th>Due-date</th>
 <th>Status</th>
+<th colspan="2">Update</th>
 </tr>
 </thead>
+<% 
+for(TaskDto task:tasks)
+{ %>
+
 
 <tbody>
 	<tr>
@@ -117,6 +131,9 @@ for(TaskDto task:tasks)
 	<td> <%= task.getTaskpriority() %></td>
 	<td> <%= task.getTaskduedate() %></td>
 	<td> <%= task.getTaskstatus() %></td>
+	
+	<td> <a id="delete" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
+	<td> <a id="edit" href="##"> Edit</a> </td>
     </tr>
     
     <%
@@ -124,7 +141,7 @@ for(TaskDto task:tasks)
 else
 {%>
 	
-	<h1 style="color: red;">No Tasks Available </h1>
+	<h1 style="color: red">Currently No Tasks Available :-( </h1>
 <% }
 %>
 </tbody>

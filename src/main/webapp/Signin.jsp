@@ -59,7 +59,7 @@ color: white;
 		
 		E-mail: &nbsp; &nbsp; &nbsp; <input type="text" name="Email"> <br><br>
 	
-		Password: &nbsp; <input type="text" name="Password"> <br><br><br>
+		Password: &nbsp; <input type="password" name="Password"> <br><br><br>
 		
 		<button>SignIn</button>
 		<% String msg = (String)request.getAttribute("msg"); 
