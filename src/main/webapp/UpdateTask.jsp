@@ -22,6 +22,9 @@ background-size: cover;
 		padding: 25px;
 		border-radius: 2pc;
 	}
+	form{
+	margin-left: 25px;
+	}
 	button{
 	padding: 10px;
 	padding-left: 30px;
@@ -68,7 +71,7 @@ Task Status: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio
 <input type="radio" value="Almost" name="taskstatus"> Almost
 <input type="radio" value="Completed" name="taskstatus"> Completed  <br><br><br>
 
-<section style="margin-left: 100px;">
+<section style="margin-left: 85px;">
 
 <button name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
 <button name="button" value="cancel">cancel</button> <br> 

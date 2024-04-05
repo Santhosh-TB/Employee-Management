@@ -19,7 +19,7 @@ background-size: cover;
 div{
 border-radius: 25px;
 width: 400px;
-margin-left: 15%;
+margin-left: 40%;
 padding: 22px;
 padding-left: 80px;
 background-color: white;
@@ -87,7 +87,7 @@ color: white;
    %>
 
 <% String image = new String(Base64.getEncoder().encode(user.getUserimage())); %>
-<img alt="No Image" src="data:image/jpeg;base64,<%= image %>" width="220" height="250" style="float:left">
+<img alt="No Image" src="data:image/jpeg;base64,<%= image %>" width="220" height="250" style="float:left; margin-left: 25%;">
 
 <div>
 <h1>Name: <%= name %> </h1>

@@ -20,12 +20,13 @@ background-size: cover;
 		padding: 25px;
 		border-radius: 2pc;
 	}
-	h1,form{
+	h1{
 		text-align: center;
 	}
-	#img{
-	margin-left: 70px;
+	form{
+	margin-left: 25px;
 	}
+
 button{
 border-style: none;
 text-decoration: none;
@@ -53,17 +54,21 @@ transition: 0.5s;
 	
 	<form action="SaveUser" method="post" enctype="multipart/form-data">
 	
-		Name: &nbsp; &nbsp; &nbsp;<input type="text" name="Name" > <br><br>
-		Email: &nbsp; &nbsp; &nbsp;<input type="text" name="Email" > <br><br>
-		Contact: &nbsp; &nbsp; <input type="text" name="Contact" > <br><br>
-		Password: &nbsp; <input type="text" name="Password"> <br><br>
+		Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="text" name="Name" > <br><br>
+		Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="Email" > <br><br>
+		Contact: &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="Contact" > <br><br>
+		Password: &nbsp; &nbsp; &nbsp;<input type="text" name="Password"> <br><br>
 		
-		<p id="img"> Image: &nbsp;&nbsp;&nbsp; <input type="file" name="Image">
+		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image">
 		</p> <br>
 		
 		
+		<section style="margin-left: 90px;">
+		
 		<button name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		<button name="button" value="cancel">cancel</button> <br> 
+		
+		</section>
 		
 		<% String msg = (String)request.getAttribute("msg"); 
 		if(msg != null)

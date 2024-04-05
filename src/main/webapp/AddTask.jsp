@@ -20,6 +20,9 @@ background-size: cover;
 		padding: 25px;
 		border-radius: 2pc;
 	}
+	form{
+	margin-left: 25px;
+	}
 	button{
 	padding: 10px;
 	padding-left: 30px;
@@ -55,7 +58,7 @@ Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date
 
 <h6 style="color: red;">Disclamier: <br>TaskTitle Can't be Modified Once Submitted <br> Task ID automatically generated and Can't Modified</h6> <br>
 
-<section style="margin-left: 100px;">
+<section style="margin-left: 90px;">
 
 <button name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
 <button name="button" value="cancel">cancel</button> <br> 
