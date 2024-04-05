@@ -52,17 +52,24 @@ transition: 0.5s;
 	<h1>Registration Form</h1> <br></br>
 	
 	<form action="SaveUser" method="post" enctype="multipart/form-data">
-		UserID: &nbsp; &nbsp;<input type="text" name="Id"> <br><br>
-		Name: &nbsp; &nbsp; &nbsp;<input type="text" name="Name"> <br><br>
-		Email: &nbsp; &nbsp; &nbsp;<input type="text" name="Email"> <br><br>
-		Contact: &nbsp; &nbsp; <input type="text" name="Contact"> <br><br>
+	
+		Name: &nbsp; &nbsp; &nbsp;<input type="text" name="Name" > <br><br>
+		Email: &nbsp; &nbsp; &nbsp;<input type="text" name="Email" > <br><br>
+		Contact: &nbsp; &nbsp; <input type="text" name="Contact" > <br><br>
 		Password: &nbsp; <input type="text" name="Password"> <br><br>
 		
 		<p id="img"> Image: &nbsp;&nbsp;&nbsp; <input type="file" name="Image">
 		</p> <br>
 		
 		
-		<button>Register</button>
+		<button name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
+		<button name="button" value="cancel">cancel</button> <br> 
+		
+		<% String msg = (String)request.getAttribute("msg"); 
+		if(msg != null)
+		{ %>
+			<h4 style="color: red;"><%= msg %></h4>
+		<% }%>
 	</from>
 	</div>
 

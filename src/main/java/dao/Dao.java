@@ -23,6 +23,38 @@ public class Dao
 		return con;
 	}
 	
+	public static int setUserId() throws ClassNotFoundException, SQLException 
+	{
+		Connection con = getConnection();
+		
+		PreparedStatement pst = con.prepareStatement("select max(userid) from user");
+		ResultSet rs = pst.executeQuery();
+		rs.next();
+		
+		int count = rs.getInt(1);
+
+		return count;
+	}
+	
+	public static int setTaskId() throws ClassNotFoundException, SQLException 
+	{
+		Connection con = getConnection();
+		
+		PreparedStatement pst = con.prepareStatement("select max(taskid) from task");
+		ResultSet rs = pst.executeQuery();
+		rs.next();
+		
+        int count = rs.getInt(1);
+        
+		if(count == 0)
+		{
+			count = 100;
+		}
+		
+		return count;
+	}
+	
+	
 	
 	public static int saveUser(Dto user) throws ClassNotFoundException, SQLException 
 	{
@@ -93,6 +125,7 @@ public class Dao
 	
 	}	
 	
+	
 	public List<TaskDto> getAllTasksByUserId(int userid) throws ClassNotFoundException, SQLException
 	{ 
 		Connection con = getConnection();
@@ -130,17 +163,33 @@ public class Dao
 	public int updateTask(TaskDto task) throws ClassNotFoundException, SQLException
 	{ 
 		Connection con = getConnection();
-		PreparedStatement pst = con.prepareStatement("update task set taskdescription = ?, taskpriority = ?, taskduedate = ?, taskstatus =? where userid =?");
+		PreparedStatement pst = con.prepareStatement("update task set taskdescription = ?, taskpriority = ?, taskduedate = ?, taskstatus =? where taskid =?");
 
 		pst.setString(1, task.getTaskdescription());
 		pst.setString(2, task.getTaskpriority());
 		pst.setString(3, task.getTaskduedate());
 		pst.setString(4, task.getTaskstatus());
-		pst.setInt(5, task.getUserid());
+		pst.setInt(5, task.getTaskid());
 		
 		int res = pst.executeUpdate();
 		return res;
 	
 	}	
 
+	
+	public TaskDto findTaskById(int taskid) throws ClassNotFoundException, SQLException
+	{
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("select * from task where taskid = ?");
+		pst.setInt(1, taskid);
+		
+		ResultSet rs = pst.executeQuery();
+		rs.next();
+		
+		TaskDto task = new TaskDto(taskid, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+		
+		return task;
+		
+	}
+	
 }

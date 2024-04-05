@@ -75,7 +75,7 @@ color: white;
 
 <body>
 
-<h1 style="text-align: center; font-size: 50px; ">Welcome To The User Page</h1>
+<h1 style="text-align: center; font-size: 50px; color: white; ">Welcome To The User Page</h1>
 <br>
 
 <% HttpSession ses = request.getSession(); 
@@ -109,6 +109,7 @@ color: white;
 <table>
 <thead>
 <tr>
+<th>SI.No</th>
 <th>ID</th>
 <th>Title</th>
 <th>Description</th>
@@ -119,12 +120,21 @@ color: white;
 </tr>
 </thead>
 <% 
+int count = 0;	
 for(TaskDto task:tasks)
-{ %>
-
-
+{ 
+	if(count >= 1)
+	{
+		count++;
+	}
+	else
+		{ 
+		count = 1; 
+		}
+		%>
 <tbody>
 	<tr>
+	<td> <%= count %></td>
 	<td> <%= task.getTaskid() %></td>
 	<td> <%= task.getTasktitle() %></td>
 	<td> <%= task.getTaskdescription() %></td>
@@ -132,8 +142,8 @@ for(TaskDto task:tasks)
 	<td> <%= task.getTaskduedate() %></td>
 	<td> <%= task.getTaskstatus() %></td>
 	
-	<td> <a id="delete" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
-	<td> <a id="edit" href="UpdateTask.jsp"> Edit</a> </td>
+	<td> <a id="delete" onclick="delete()" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
+	<td> <a id="edit" href="oldtaskdetails?taskid=<%=task.getTaskid()%>"> Edit</a> </td>
     </tr>
     
     <%
@@ -146,30 +156,6 @@ else
 %>
 </tbody>
 </table>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 </body>

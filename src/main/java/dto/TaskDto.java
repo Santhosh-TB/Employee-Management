@@ -26,12 +26,12 @@ public class TaskDto
 	
 	
 	public TaskDto(String taskdescription, String taskpriority, String taskduedate,
-			String taskstatus, int userid) {
+			String taskstatus, int taskid) {
 		this.taskdescription = taskdescription;
 		this.taskpriority = taskpriority;
 		this.taskduedate = taskduedate;
 		this.taskstatus = taskstatus;
-		this.userid = userid;
+		this.taskid = taskid;
 	}
 	
 	

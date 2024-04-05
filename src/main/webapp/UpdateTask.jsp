@@ -26,7 +26,6 @@ background-size: cover;
 	padding: 10px;
 	padding-left: 30px;
 	padding-right:30px;
-	margin-left: 170px;
 	border-style: none;
 	border-radius: 2pc;
 background-color: blue;
@@ -46,21 +45,35 @@ transition: 0.5s;
 
 <div>
 
+<%TaskDto task = (TaskDto)request.getAttribute("task"); %>
+
 <h1 style="padding-left: 100px">Task Update Form</h1> <br></br>
 
-<form action="updatetask" method="post">
+<form action="updatetask?taskid=<%=task.getTaskid()%>" method="post">
 
-Task Description: &nbsp;&nbsp; <input type="text" name="taskdescription"><br><br>
-Task Priority: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Low" name="taskpriority"> Low
+Task ID: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" disabled="disabled" name="taskid" value="<%= task.getTaskid() %>"><br><br>
+Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"  disabled="disabled" value="<%= task.getTasktitle()%>"><br><br>
+Task Description: &nbsp;&nbsp; <input type="text" name="taskdescription"  value="<%= task.getTaskdescription() %>"><br><br>
+
+Current Task Priority :  <%= task.getTaskpriority() %> <br>
+
+Update Priority: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Low" name="taskpriority"> Low
 <input type="radio" value="Medium" name="taskpriority"> Medium
 <input type="radio" value="High" name="taskpriority"> High  <br><br>
-Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="taskduedate"><br><br>
+Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="taskduedate" value="<%= task.getTaskduedate() %>"><br><br>
 
-Task Status: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Pending" name="taskstatus"> Pending
+Current Task Status :  <%= task.getTaskstatus() %> <br>
+
+Task Status: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Pending" name="taskstatus" > Pending
 <input type="radio" value="Almost" name="taskstatus"> Almost
 <input type="radio" value="Completed" name="taskstatus"> Completed  <br><br><br>
 
-<button>Submit</button>
+<section style="margin-left: 100px;">
+
+<button name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
+<button name="button" value="cancel">cancel</button> <br> 
+
+</section>
 
 </form>
 

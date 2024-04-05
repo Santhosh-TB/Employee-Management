@@ -23,36 +23,62 @@ public class Signup extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		int id = Integer.parseInt(req.getParameter("Id"));
-		String name = req.getParameter("Name");
-		String email = req.getParameter("Email");
-		Long contact = Long.parseLong(req.getParameter("Contact"));
-		String password = req.getParameter("Password");
-		
-		Part imagepart = req.getPart("Image");
-		byte[] imagebyte = imagepart.getInputStream().readAllBytes();
-		
-		Dto user = new Dto(id, name, email, contact, password, imagebyte);
-		
-		Dao dao = new Dao();
-		
-		try 
+		if(!req.getParameter("button").equals("cancel"))
 		{
-			int res = dao.saveUser(user);
-		if(res>0)
-		{
-			resp.sendRedirect("Singin.jsp");
+			
+			if(!req.getParameter("Name").isEmpty() && !req.getParameter("Email").isEmpty() && !req.getParameter("Contact").isEmpty() && !req.getParameter("Password").isEmpty())
+			{
+				
+			
+			Dao dao = new Dao();
+			
+			int id=1;
+			try {
+				id += Dao.setUserId();
+			} 
+			catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			String name = req.getParameter("Name");
+			String email = req.getParameter("Email");
+			Long contact = Long.parseLong(req.getParameter("Contact"));
+			String password = req.getParameter("Password");
+			
+			Part imagepart = req.getPart("Image");
+			byte[] imagebyte = imagepart.getInputStream().readAllBytes();
+			
+			Dto user = new Dto(id, name, email, contact, password, imagebyte);
+			
+			
+			
+			try 
+			{
+				int res = dao.saveUser(user);
+			if(res>0)
+			{
+				resp.sendRedirect("Signin.jsp");
+			}
+			else
+			{
+				resp.sendRedirect("Signup.jsp");
+			}
+			
+			}
+			
+			catch (ClassNotFoundException | SQLException e) 
+			{
+				e.printStackTrace();
+			}
+			}
+			else
+			{
+				req.setAttribute("msg", "All Fields are Mandotary");
+				req.getRequestDispatcher("Signup.jsp").include(req, resp);
+			}
 		}
 		else
 		{
-			resp.sendRedirect("Singup.jsp");
-		}
-		
-		}
-		
-		catch (ClassNotFoundException | SQLException e) 
-		{
-			e.printStackTrace();
+			resp.sendRedirect("index.jsp");
 		}
 				
 	}

@@ -59,11 +59,13 @@ transition: 0.5s;
 	
 		Password: &nbsp; <input type="password" name="Password"> <br><br><br>
 		
-		<button>SignIn</button>
+		<button name="button">SignIn</button> &nbsp;&nbsp;&nbsp;&nbsp;
+		<button name="button" value="cancel">cancel</button>
+		
 		<% String msg = (String)request.getAttribute("msg"); 
 		if(msg != null)
 		{ %>
-			<h4><%= msg %></h4>
+			<h4 style="color: red;"><%= msg %></h4>
 		<% }%>
 
 		

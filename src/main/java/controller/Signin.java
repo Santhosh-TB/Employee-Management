@@ -20,6 +20,9 @@ public class Signin extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
+		if(!req.getParameter("button").equals("cancel"))
+		{
+			
 		String email = req.getParameter("Email");
 		String password = req.getParameter("Password");
 		
@@ -54,6 +57,13 @@ public class Signin extends HttpServlet
 		catch (ClassNotFoundException | SQLException e) 
 		{
 			e.printStackTrace();
+		}	
+			
+		
+		}
+		else
+		{
+			resp.sendRedirect("index.jsp");
 		}
 	}
 }
