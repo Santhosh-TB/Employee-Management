@@ -17,7 +17,7 @@ background-size: cover;
 	div{
 		width: 450px;
 		margin-left: 500px;
-		margin-top: 150px;
+		margin-top: 130px;
 		background-color: white;
 		padding: 25px;
 		border-radius: 2pc;
@@ -56,7 +56,7 @@ transition: 0.5s;
 
 Task ID: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" disabled="disabled" name="taskid" value="<%= task.getTaskid() %>"><br><br>
 Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"  disabled="disabled" value="<%= task.getTasktitle()%>"><br><br>
-Task Description: &nbsp;&nbsp; <input type="text" name="taskdescription"  value="<%= task.getTaskdescription() %>"><br><br>
+Task Description: &nbsp;&nbsp; <input type="text" placeholder="Enter Task Description"  name="taskdescription"  value="<%= task.getTaskdescription() %>"><br><br>
 
 Current Task Priority :  <%= task.getTaskpriority() %> <br>
 

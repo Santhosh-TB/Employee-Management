@@ -49,8 +49,8 @@ transition: 0.5s;
 <h1 style="padding-left: 150px">Task Form</h1> <br></br>
 <form action="addtask" method="post">
 
-Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"><br><br>
-Task Description: &nbsp;&nbsp; <input type="text" name="taskdescription"><br><br>
+Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter Task Title" name="tasktitle"><br><br>
+Task Description: &nbsp;&nbsp; <input type="text" placeholder="Enter Task Description" name="taskdescription"><br><br>
 Task Priority: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Low" name="taskpriority"> Low
 <input type="radio" value="Medium" name="taskpriority"> Medium
 <input type="radio" value="High" name="taskpriority"> High  <br><br>

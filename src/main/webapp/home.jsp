@@ -19,9 +19,9 @@ background-size: cover;
 div{
 border-radius: 25px;
 width: 400px;
-margin-left: 40%;
-padding: 22px;
-padding-left: 80px;
+margin-left: 22%;
+padding: 45px;
+padding-left: 330px;
 background-color: white;
 }
 a{
@@ -37,20 +37,34 @@ color: black;
 background-color: white;
 }
 a:hover{
-transition: 0.5s;
-transform: scale(1.2, 1.2);
 color: white;
 background-color: blue;
 }
 #delete:hover{
-transition: 0.5s;
-transform: scale(1.2, 1.2);
 background-color: red;
 }
 #edit:hover{
-transition: 0.5s;
-transform: scale(1.2, 1.2);
 background-color: darkgreen;
+}
+
+#edit_user{
+border-radius: 2pc;
+padding: 10px;
+text-decoration: none;
+font-size: small;
+font-weight: bold;
+padding-left: 30px;
+padding-right: 30px;
+
+color: white;
+background-color: black;
+}
+#edit_user:hover{
+color: black;
+background-color: white;
+border-width: 2px;
+border-style: solid;
+border-color: black;
 }
 
 table,th,td {
@@ -87,13 +101,17 @@ color: white;
    %>
 
 <% String image = new String(Base64.getEncoder().encode(user.getUserimage())); %>
-<img alt="No Image" src="data:image/jpeg;base64,<%= image %>" width="220" height="250" style="float:left; margin-left: 25%;">
+<img alt="No Image" src="data:image/jpeg;base64,<%= image %>" width="220" height="282" style="float:left; margin-left: 25%; margin-top: 17px;">
 
 <div>
 <h1>Name: <%= name %> </h1>
 <h3>UserID: <%= id %></h3>
 <h3>Email: <%= email %></h3>
 <h3>Contact: <%= contact %></h3>
+
+<br>
+
+<a id="edit_user" href="olduserdetails?userid=<%= id %>"> Edit</a>
 </div>
 <br> <br>
 
@@ -142,7 +160,7 @@ for(TaskDto task:tasks)
 	<td> <%= task.getTaskduedate() %></td>
 	<td> <%= task.getTaskstatus() %></td>
 	
-	<td> <a id="delete" onclick="delete()" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
+	<td> <a id="delete" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
 	<td> <a id="edit" href="oldtaskdetails?taskid=<%=task.getTaskid()%>"> Edit</a> </td>
     </tr>
     

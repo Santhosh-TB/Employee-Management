@@ -54,10 +54,10 @@ transition: 0.5s;
 	
 	<form action="SaveUser" method="post" enctype="multipart/form-data">
 	
-		Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="text" name="Name" > <br><br>
-		Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="Email" > <br><br>
-		Contact: &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="Contact" > <br><br>
-		Password: &nbsp; &nbsp; &nbsp;<input type="text" name="Password"> <br><br>
+		Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="text" placeholder="Enter your Name" name="Name" > <br><br>
+		Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" placeholder="Enter our E-Mail" name="Email" > <br><br>
+		Contact: &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" placeholder="Enter Your Contact Number" name="Contact" > <br><br>
+		Password: &nbsp; &nbsp; &nbsp;<input type="text" placeholder="Create Your Password" name="Password"> <br><br>
 		
 		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image">
 		</p> <br>

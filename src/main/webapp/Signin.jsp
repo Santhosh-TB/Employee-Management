@@ -55,9 +55,9 @@ transition: 0.5s;
 	
 	<form action="userlogin" method="post">
 		
-		E-mail: &nbsp; &nbsp; &nbsp; <input type="text" name="Email"> <br><br>
+		E-mail: &nbsp; &nbsp; &nbsp; <input type="text" placeholder="Enter Your E-Mail" name="Email"> <br><br>
 	
-		Password: &nbsp; <input type="password" name="Password"> <br><br><br>
+		Password: &nbsp; <input type="password" placeholder="Enter Your Password" name="Password"> <br><br><br>
 		
 		<button name="button">SignIn</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		<button name="button" value="cancel">cancel</button>

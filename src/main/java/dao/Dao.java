@@ -192,4 +192,42 @@ public class Dao
 		
 	}
 	
+	
+	public Dto findUserById(int userid) throws ClassNotFoundException, SQLException
+	{
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("select * from user where userid = ?");
+		pst.setInt(1, userid);
+		
+		ResultSet rs = pst.executeQuery();
+		rs.next();
+		
+		Blob imageBlob = rs.getBlob(6);
+		byte[] image = imageBlob.getBytes(1, (int)imageBlob.length());
+		
+		Dto user = new Dto(userid, rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5), image);
+		
+		return user;
+		
+	}
+	
+	
+	public int updateUser(Dto user) throws ClassNotFoundException, SQLException
+	{ 
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("update user set useremail = ?, usercontact = ?, userpassword = ?, userimage =? where userid =?");
+
+		pst.setString(1, user.getUseremail());
+		pst.setLong(2, user.getUsercontact());
+		pst.setString(3, user.getUserpassword());
+		
+		pst.setBlob(4, new SerialBlob(user.getUserimage()));     // Converting our image Byte[] to Blob and sending
+		
+		pst.setInt(5, user.getUserid());	
+		
+		int res = pst.executeUpdate();
+		return res;	
+	
+	}	
+	
 }
