@@ -51,10 +51,8 @@ transition: 0.5s;
 
 Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter Task Title" name="tasktitle"><br><br>
 Task Description: &nbsp;&nbsp; <input type="text" placeholder="Enter Task Description" name="taskdescription"><br><br>
-Task Priority: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Low" name="taskpriority"> Low
-<input type="radio" value="Medium" name="taskpriority"> Medium
-<input type="radio" value="High" name="taskpriority"> High  <br><br>
-Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="taskduedate"><br>
+
+Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="taskduedate"><br>
 
 <h6 style="color: red;">Disclamier: <br>TaskTitle Can't be Modified Once Submitted <br> Task ID automatically generated and Can't Modified</h6> <br>
 

@@ -111,14 +111,15 @@ public class Dao
 	public int createTask(TaskDto task) throws ClassNotFoundException, SQLException
 	{ 
 		Connection con = getConnection();
-		PreparedStatement pst = con.prepareStatement("insert into task values (?,?,?,?,?,?,?)");
+		PreparedStatement pst = con.prepareStatement("insert into task values (?,?,?,?,?,?,?,?)");
 		pst.setInt(1, task.getTaskid());
 		pst.setString(2, task.getTasktitle());
 		pst.setString(3, task.getTaskdescription());
 		pst.setString(4, task.getTaskpriority());
 		pst.setString(5, task.getTaskduedate());
 		pst.setString(6, task.getTaskstatus());
-		pst.setInt(7, task.getUserid());
+		pst.setString(7, task.getTaskc_date());
+		pst.setInt(8, task.getUserid());
 		
 		int res = pst.executeUpdate();
 		return res;
@@ -138,7 +139,7 @@ public class Dao
 		
 		while(rs.next())
 		{
-			TaskDto task = new TaskDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+			TaskDto task = new TaskDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
 			
 			tasks.add(task);
 					
@@ -163,13 +164,14 @@ public class Dao
 	public int updateTask(TaskDto task) throws ClassNotFoundException, SQLException
 	{ 
 		Connection con = getConnection();
-		PreparedStatement pst = con.prepareStatement("update task set taskdescription = ?, taskpriority = ?, taskduedate = ?, taskstatus =? where taskid =?");
+		PreparedStatement pst = con.prepareStatement("update task set taskdescription = ?, taskpriority = ?, taskduedate = ?, taskstatus =?, c_date =? where taskid =?");
 
 		pst.setString(1, task.getTaskdescription());
 		pst.setString(2, task.getTaskpriority());
 		pst.setString(3, task.getTaskduedate());
 		pst.setString(4, task.getTaskstatus());
-		pst.setInt(5, task.getTaskid());
+		pst.setString(5, task.getTaskc_date());
+		pst.setInt(6, task.getTaskid());
 		
 		int res = pst.executeUpdate();
 		return res;
@@ -186,7 +188,7 @@ public class Dao
 		ResultSet rs = pst.executeQuery();
 		rs.next();
 		
-		TaskDto task = new TaskDto(taskid, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+		TaskDto task = new TaskDto(taskid, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
 		
 		return task;
 		
@@ -228,6 +230,40 @@ public class Dao
 		int res = pst.executeUpdate();
 		return res;	
 	
-	}	
+	}
+	
+	public List getAllTasks() throws ClassNotFoundException, SQLException
+	{ 
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("select * from task");
+		
+		ResultSet rs = pst.executeQuery();
+		
+		List<TaskDto> tasks = new ArrayList<>();
+		
+		while(rs.next())
+		{
+			TaskDto task = new TaskDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+			
+			tasks.add(task);
+					
+		}
+		
+		return tasks;
+	}
+	
+	
+	public int updatePriority(String priority, int taskid) throws ClassNotFoundException, SQLException
+	{
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("update task set taskpriority = ? where taskid = ?");
+		
+		pst.setString(1, priority);
+		pst.setInt(2, taskid);
+		
+		int res = pst.executeUpdate();
+		
+		return res;
+	}
 	
 }

@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,13 +39,26 @@ public class AddTask extends HttpServlet
 		{
 			e.printStackTrace();
 		}
+		
 		String tasktitle = req.getParameter("tasktitle");
 		String taskdescription = req.getParameter("taskdescription");
-		String taskpriority = req.getParameter("taskpriority");
+		String taskpriority ;
 		String taskduedate = req.getParameter("taskduedate");
 		
 		
-		TaskDto task = new TaskDto (taskid, tasktitle, taskdescription, taskpriority, taskduedate, "Pending", userid);
+		LocalDate today = LocalDate.now();
+		LocalDate duedate = LocalDate.parse(taskduedate);
+		
+		long diff = ChronoUnit.DAYS.between(today,duedate);
+		
+		if(diff <= 3)
+			taskpriority = "High";
+		else if(diff >= 4 && diff <= 7)
+			taskpriority = "Medium";
+		else
+			taskpriority = "Low";		
+		
+		TaskDto task = new TaskDto (taskid, tasktitle, taskdescription, taskpriority, taskduedate, "Pending", null, userid);
 		
 		
 		try                                                     // can't use throws becoz servlets can't handle sql exception
@@ -58,6 +73,7 @@ public class AddTask extends HttpServlet
 			
 			req.getRequestDispatcher("home.jsp").include(req, resp);
 		}
+		
 		else
 		{
 			resp.getWriter().println("Failed");

@@ -54,25 +54,47 @@ transition: 0.5s;
 
 <form action="updatetask?taskid=<%=task.getTaskid()%>" method="post">
 
-Task ID: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" disabled="disabled" name="taskid" value="<%= task.getTaskid() %>"><br><br>
-Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"  disabled="disabled" value="<%= task.getTasktitle()%>"><br><br>
-Task Description: &nbsp;&nbsp; <input type="text" placeholder="Enter Task Description"  name="taskdescription"  value="<%= task.getTaskdescription() %>"><br><br>
+Task ID: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" disabled="disabled" name="taskid" value="<%= task.getTaskid() %>"><br><br>
+Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"  disabled="disabled" value="<%= task.getTasktitle()%>"><br><br>
+Task Description: &nbsp;&nbsp;&nbsp; <input type="text" placeholder="Enter Task Description"  name="taskdescription"  value="<%= task.getTaskdescription() %>"><br><br>
 
-Current Task Priority :  <%= task.getTaskpriority() %> <br>
-
-Update Priority: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Low" name="taskpriority"> Low
-<input type="radio" value="Medium" name="taskpriority"> Medium
-<input type="radio" value="High" name="taskpriority"> High  <br><br>
 Task Due-date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="taskduedate" value="<%= task.getTaskduedate() %>"><br><br>
 
-Current Task Status :  <%= task.getTaskstatus() %> <br>
 
-Task Status: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" value="Pending" name="taskstatus" > Pending
-<input type="radio" value="Almost" name="taskstatus"> Almost
-<input type="radio" value="Completed" name="taskstatus"> Completed  <br><br><br>
+<%if(task.getTaskstatus().equals("Pending"))
+{ %>
+
+Task Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <select name="taskstatus" >
+<option value="Pending" selected="selected">Pending</option>
+<option value="Almost" >Almost</option>
+<option value="Completed" >Completed</option> 
+</select> <br><br><br>
+
+<% } 
+else if(task.getTaskstatus().equals("Almost"))
+{
+%>
+
+Task Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <select name="taskstatus">
+<option value="Pending" >Pending</option>
+<option value="Almost" selected="selected">Almost</option>
+<option value="Completed">Completed</option>
+</select> <br><br><br>
+
+
+<% }
+else
+{
+%>
+Task Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <select name="taskstatus">
+<option value="Pending"  >Pending</option>
+<option value="Almost" >Almost</option>
+<option value="Completed" selected="selected">Completed</option>
+</select> <br><br><br>
+<%} %>
+
 
 <section style="margin-left: 85px;">
-
 <button name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
 <button name="button" value="cancel">cancel</button> <br> 
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import dto.Dto;
+import dto.TaskDto;
 
 @WebServlet("/delete")
 
@@ -27,14 +28,32 @@ public class DeleteTask extends HttpServlet
 		
 		try 
 		{
-			dao.deleteTask(taskid);
-			
+	
 			HttpSession ses = req.getSession();
 			Dto u = (Dto)ses.getAttribute("Dto");
 			
-			req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
 			
-			req.getRequestDispatcher("home.jsp").include(req, resp);
+			if(u != null)
+			{
+				TaskDto taskdetails = dao.findTaskById(taskid);
+				
+				if(taskdetails.getUserid() == u.getUserid())
+				{
+					dao.deleteTask(taskid);
+					req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
+					
+					req.getRequestDispatcher("home.jsp").include(req, resp);
+				}
+				else
+				{  
+                    req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));					
+					req.getRequestDispatcher("home.jsp").include(req, resp);
+				}
+			}
+			else
+			{
+				resp.sendRedirect("Signin.jsp");
+			}
 		
 		}
 		

@@ -73,7 +73,7 @@ outline: none;
 		Contact: &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="Contact" placeholder="Contact" value="<%= olduser.getUsercontact() %>">
 		 <br><br>
 	
-		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image" >  <p style="font-size: 12px; color: red">Please Upload your Picture**</p>
+		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image" value="<%= olduser.getUserimage() %>">  <p style="font-size: 12px; color: red">Please Upload your Picture**</p>
 		</p> <br>
 		
 		Enter Password to Update Details: &nbsp; &nbsp;<input id="password" type="text" placeholder="Enter Your Password....." name="Password" > <br> <br> <br>

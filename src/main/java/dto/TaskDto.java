@@ -1,5 +1,7 @@
 package dto;
 
+import java.time.LocalDate;
+
 public class TaskDto 
 {
 	private int taskid;
@@ -8,29 +10,32 @@ public class TaskDto
 	private String taskpriority;
 	private String taskduedate;
 	private String taskstatus;
+	private String taskc_date;
 	private int userid;
 	
 	
 	
 	
 	public TaskDto(int taskid, String tasktitle, String taskdescription, String taskpriority, String taskduedate,
-			String taskstatus, int userid) {
+			String taskstatus, String taskc_date, int userid) {
 		this.taskid = taskid;
 		this.tasktitle = tasktitle;
 		this.taskdescription = taskdescription;
 		this.taskpriority = taskpriority;
 		this.taskduedate = taskduedate;
 		this.taskstatus = taskstatus;
+		this.taskc_date = taskc_date;
 		this.userid = userid;
 	}
 	
 	
 	public TaskDto(String taskdescription, String taskpriority, String taskduedate,
-			String taskstatus, int taskid) {
+			String taskstatus, String taskc_date, int taskid) {
 		this.taskdescription = taskdescription;
 		this.taskpriority = taskpriority;
 		this.taskduedate = taskduedate;
 		this.taskstatus = taskstatus;
+		this.taskc_date = taskc_date;
 		this.taskid = taskid;
 	}
 	
@@ -76,6 +81,14 @@ public class TaskDto
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+	public String getTaskc_date() {
+		return taskc_date;
+	}
+
+
+	public void setTaskc_date(String taskc_date) {
+		this.taskc_date = taskc_date;
 	}
 	
 	

@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,13 +33,35 @@ public class UpdateTask extends HttpServlet
 		int taskid = Integer.parseInt(req.getParameter("taskid"));
 		
 		String taskdescription = req.getParameter("taskdescription");
-		String taskpriority = req.getParameter("taskpriority");
+		String taskpriority ;
 		String taskduedate = req.getParameter("taskduedate");
 		String taskstatus = req.getParameter("taskstatus");
 		
 		
+		LocalDate today = LocalDate.now();
+		LocalDate duedate = LocalDate.parse(taskduedate);
 		
-		TaskDto task = new TaskDto (taskdescription, taskpriority, taskduedate, taskstatus, taskid);
+		long diff = ChronoUnit.DAYS.between(today,duedate);
+		
+		if(diff <= 3)
+			taskpriority = "High";
+		else if(diff >= 4 && diff <= 7)
+			taskpriority = "Medium";
+		else
+			taskpriority = "Low";
+		
+		TaskDto task;
+		if(req.getParameter("taskstatus").equals("Completed"))
+		{
+			String tdy = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+			task = new TaskDto (taskdescription, taskpriority, taskduedate, taskstatus, tdy, taskid);
+		}
+		else 
+		{
+			task = new TaskDto (taskdescription, taskpriority, taskduedate, taskstatus, null, taskid);
+		}
+			
+		
 		
 		try                                                     // can't use throws becoz servlets can't handle sql exception
 		{

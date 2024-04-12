@@ -47,7 +47,7 @@ background-color: red;
 background-color: darkgreen;
 }
 
-#edit_user{
+.user{
 border-radius: 2pc;
 padding: 10px;
 text-decoration: none;
@@ -55,16 +55,18 @@ font-size: small;
 font-weight: bold;
 padding-left: 30px;
 padding-right: 30px;
-
 color: white;
 background-color: black;
+position: absolute;
 }
-#edit_user:hover{
+.user:hover{
 color: black;
 background-color: white;
-border-width: 2px;
-border-style: solid;
-border-color: black;
+outline-style:solid;
+outline-color: black;
+}
+#signout{
+margin-left: 100px;
 }
 
 table,th,td {
@@ -98,6 +100,7 @@ color: white;
   String name = user.getUsername();
   String email = user.getUseremail();
   long contact = user.getUsercontact();
+  
    %>
 
 <% String image = new String(Base64.getEncoder().encode(user.getUserimage())); %>
@@ -111,7 +114,8 @@ color: white;
 
 <br>
 
-<a id="edit_user" href="olduserdetails?userid=<%= id %>"> Edit</a>
+<a class="user" href="olduserdetails?userid=<%= id %>"> Edit</a> &nbsp;&nbsp; 
+<a class="user" id="signout" onclick="javascript:Signout();"> Signout</a>
 </div>
 <br> <br>
 
@@ -134,13 +138,14 @@ color: white;
 <th>Priority</th>
 <th>Due-date</th>
 <th>Status</th>
+<th>C.Date</th>
 <th colspan="2">Update</th>
 </tr>
 </thead>
 <% 
 int count = 0;	
 for(TaskDto task:tasks)
-{ 
+{ 	
 	if(count >= 1)
 	{
 		count++;
@@ -155,13 +160,16 @@ for(TaskDto task:tasks)
 	<td> <%= count %></td>
 	<td> <%= task.getTaskid() %></td>
 	<td> <%= task.getTasktitle() %></td>
-	<td> <%= task.getTaskdescription() %></td>
+	<td> <%= task.getTaskdescription() %></td>      
 	<td> <%= task.getTaskpriority() %></td>
 	<td> <%= task.getTaskduedate() %></td>
 	<td> <%= task.getTaskstatus() %></td>
+	<td> <%= task.getTaskc_date() %></td>
 	
-	<td> <a id="delete" href="delete?taskid=<%=task.getTaskid()%>"> Delete</a> </td>
-	<td> <a id="edit" href="oldtaskdetails?taskid=<%=task.getTaskid()%>"> Edit</a> </td>
+	<td> <a id="delete" href="delete?taskid=<%= task.getTaskid() %>" > Delete</a> </td>
+	
+	<td> <a id="edit"   href="oldtaskdetails?taskid=<%= task.getTaskid() %>" > Edit</a> </td>
+	
     </tr>
     
     <%
@@ -175,6 +183,29 @@ else
 </tbody>
 </table>
 	
+	
+<script type="text/javascript">
 
+    function Signout()
+    {
+    	var op = confirm("Are you sure want to Signout?..");
+    	if(op)
+    		{
+    		document.getElementById("signout").setAttribute("href", "signout");
+    		}
+    }
+    
+    
+ //   function Delete(x)
+//    {
+//    	var op = confirm("Are you sure want to Delete the Task?..");
+//    	if(op)
+    //		{
+      //    document.getElementById("delete").setAttribute("href", "delete?taskid=  ");
+    	//	}
+  //  }
+</script>
+	
+		
 </body>
 </html>
