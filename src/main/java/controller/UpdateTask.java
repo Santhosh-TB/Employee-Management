@@ -68,9 +68,10 @@ public class UpdateTask extends HttpServlet
 			int res = dao.updateTask(task);
 		if(res>0)
 		{
-			req.setAttribute("tasks", dao.getAllTasksByUserId(userid));
+			HttpSession ses = req.getSession();
+			ses.setAttribute("tasks", dao.getAllTasksByUserId(userid));
 			
-			req.getRequestDispatcher("home.jsp").include(req, resp);
+			resp.sendRedirect("home.jsp");
 		}
 		else
 		{
@@ -89,14 +90,15 @@ public class UpdateTask extends HttpServlet
 		{
             try 
             {
-				req.setAttribute("tasks", dao.getAllTasksByUserId(userid));
+            	HttpSession ses = req.getSession();
+				ses.setAttribute("tasks", dao.getAllTasksByUserId(userid));
 			} 
             catch (ClassNotFoundException | SQLException e) 
             {
 				e.printStackTrace();
 			}
 			
-			req.getRequestDispatcher("home.jsp").include(req, resp);
+            resp.sendRedirect("home.jsp");
 		}
 		
 	}

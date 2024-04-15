@@ -36,10 +36,10 @@ public class Signin extends HttpServlet
 				if(u.getUserpassword().equals(password))
 				{
 					List<TaskDto> tasks = dao.getAllTasksByUserId(u.getUserid());
-					req.setAttribute("tasks", tasks);
+					req.getSession().setAttribute("tasks", tasks);
 					
 					req.getSession().setAttribute("Dto", u);
-					req.getRequestDispatcher("home.jsp").include(req, resp);
+					resp.sendRedirect("home.jsp");
 				}
 				else
 				{

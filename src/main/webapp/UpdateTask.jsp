@@ -52,7 +52,7 @@ transition: 0.5s;
 
 <h1 style="padding-left: 100px">Task Update Form</h1> <br></br>
 
-<form action="updatetask?taskid=<%=task.getTaskid()%>" method="post">
+<form id="Form"  method="post">
 
 Task ID: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" disabled="disabled" name="taskid" value="<%= task.getTaskid() %>"><br><br>
 Task Title: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tasktitle"  disabled="disabled" value="<%= task.getTasktitle()%>"><br><br>
@@ -95,14 +95,33 @@ Task Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 
 <section style="margin-left: 85px;">
-<button name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
-<button name="button" value="cancel">cancel</button> <br> 
-
+<button id="but" onclick="javascript:update(<%= task.getTaskid() %>);" name="button">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;
+<button name="button"  onclick="javascript:cancel(<%= task.getTaskid() %>);"  value="cancel">cancel</button> <br> 
 </section>
 
 </form>
 
 </div>	
+
+<script type="text/javascript">
+
+function update(a)
+{
+	alert(`Task ${a} is Successfully Updated`);
+     
+	document.getElementById("Form").setAttribute("action", `updatetask?taskid=${a}`);
+		
+}
+
+function cancel(a)
+{
+      document.getElementById("Form").setAttribute("action", `updatetask?taskid=${a}`);
+}
+
+
+
+</script>
+
 
 </body>
 </html>

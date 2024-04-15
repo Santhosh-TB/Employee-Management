@@ -14,7 +14,7 @@ import dao.Dao;
 import dto.Dto;
 import dto.TaskDto;
 
-@WebServlet("/delete")
+@WebServlet("/Delete")
 
 public class DeleteTask extends HttpServlet
 {
@@ -40,14 +40,14 @@ public class DeleteTask extends HttpServlet
 				if(taskdetails.getUserid() == u.getUserid())
 				{
 					dao.deleteTask(taskid);
-					req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
+					ses.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
 					
-					req.getRequestDispatcher("home.jsp").include(req, resp);
+					resp.sendRedirect("home.jsp");
 				}
 				else
 				{  
-                    req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));					
-					req.getRequestDispatcher("home.jsp").include(req, resp);
+                    ses.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));					
+                    resp.sendRedirect("home.jsp");
 				}
 			}
 			else

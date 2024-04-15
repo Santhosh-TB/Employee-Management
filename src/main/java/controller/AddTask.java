@@ -69,9 +69,9 @@ public class AddTask extends HttpServlet
 			HttpSession ses = req.getSession();
 			Dto u = (Dto)ses.getAttribute("Dto");
 			
-			req.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
+			ses.setAttribute("tasks", dao.getAllTasksByUserId(u.getUserid()));
 			
-			req.getRequestDispatcher("home.jsp").include(req, resp);
+			resp.sendRedirect("home.jsp");
 		}
 		
 		else
@@ -91,14 +91,15 @@ public class AddTask extends HttpServlet
 		{
 			try 
             {
-				req.setAttribute("tasks", dao.getAllTasksByUserId(userid));
+				HttpSession ses = req.getSession();
+				ses.setAttribute("tasks", dao.getAllTasksByUserId(userid));
 			} 
             catch (ClassNotFoundException | SQLException e) 
             {
 				e.printStackTrace();
 			}
 			
-			req.getRequestDispatcher("home.jsp").include(req, resp);
+			resp.sendRedirect("home.jsp");
 		}
 				
 	}

@@ -122,7 +122,7 @@ color: white;
 	<a href="AddTask.jsp" > Add Task </a> <br><br>
 	
 	
-	<% List<TaskDto> tasks = (List)request.getAttribute("tasks"); %>
+	<% List<TaskDto> tasks = (List)ses.getAttribute("tasks"); %>
 
 
 
@@ -166,12 +166,12 @@ for(TaskDto task:tasks)
 	<td> <%= task.getTaskstatus() %></td>
 	<td> <%= task.getTaskc_date() %></td>
 	
-	<td> <a id="delete" href="delete?taskid=<%= task.getTaskid() %>" > Delete</a> </td>
+	<td> <a id="delete" onclick="javascript:Delete(<%= task.getTaskid() %>);" > Delete</a> </td>
 	
-	<td> <a id="edit"   href="oldtaskdetails?taskid=<%= task.getTaskid() %>" > Edit</a> </td>
+	<td> <a id="edit"  href="oldtaskdetails?taskid=<%= task.getTaskid() %>"   > Edit</a> </td>
 	
     </tr>
-    
+   
     <%
     } }
 else
@@ -194,16 +194,15 @@ else
     		document.getElementById("signout").setAttribute("href", "signout");
     		}
     }
-    
-    
- //   function Delete(x)
-//    {
-//    	var op = confirm("Are you sure want to Delete the Task?..");
-//    	if(op)
-    //		{
-      //    document.getElementById("delete").setAttribute("href", "delete?taskid=  ");
-    	//	}
-  //  }
+ 
+   function Delete(a)
+    {
+    	var op = confirm(`Are you sure want to Delete this Task ${a}?`);
+    	if(op)
+    		{
+          document.getElementById("delete").setAttribute("href", `Delete?taskid=${a}`);
+    		}                                           
+    }
 </script>
 	
 		

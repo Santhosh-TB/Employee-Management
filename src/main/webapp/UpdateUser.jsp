@@ -80,26 +80,38 @@ outline: none;
 		
 		<section style="margin-left: 90px;">
 		
-		<button name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
+		<% String msg = (String)request.getAttribute("msg"); %>	
+		
+		<button onclick="javascript:display('${msg}');" name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		<button name="button" value="cancel">cancel</button> <br> 
 		
 		</section>
 		
-		<% String msg = (String)request.getAttribute("msg"); 
-		if(msg != null)
+		
+		<%if(msg != null)
 		{ %>
-			<h4 style="color: red; padding-left: 140px;"><%= msg %></h4>
+			<h4 onseeked="javascript:display('${msg}');" style="color: red; padding-left: 140px;"><%= msg %></h4>
 			
-			<p style="font-size: 12px; color: red;">
-			Note: <br>
-			Update Your Details Once Again and Give Correct Password to Proceed
-			</p>
-			
-		<% }%>
+			<%} %>
+		
 		
 		
 	</from>
 	</div>
+
+
+<script type="text/javascript">
+
+function display(msg)
+{
+	if(msg != null)
+		{
+		alert("Invalid Details.... :-( Please Update Your Details Once Again and Give Correct Password to Proceed")
+		}
+}
+
+</script>
+
 
 </body>
 </html>
