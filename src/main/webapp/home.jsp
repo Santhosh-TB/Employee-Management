@@ -11,6 +11,15 @@
 <title>Welcome User | Home</title>
 
 <style>
+#nav{
+border-radius: 10pc;
+height: 70px;
+margin-top: 0;
+padding-top: 12px;
+background-color: white;
+color: black;
+}
+
 body{
 background-image: url("orange cup.jpg");
 background-repeat: no-repeat;
@@ -91,7 +100,7 @@ color: white;
 
 <body>
 
-<h1 style="text-align: center; font-size: 50px; color: white; ">Welcome To The User Page</h1>
+<h1 id="nav" style="text-align: center; font-size: 50px;">Welcome To The User Page</h1>
 <br>
 
 <% HttpSession ses = request.getSession(); 

@@ -66,48 +66,47 @@ outline: none;
 <%Dto olduser = (Dto)request.getAttribute("olduserdetails"); %>
 	<h1>User Update Form</h1> <br></br>
 	
-	<form action="updateuser?Name=<%=olduser.getUsername()%>" method="post" enctype="multipart/form-data">
+	<form id="Form" action="updateuser?Name=<%= olduser.getUsername() %>" method="post" enctype="multipart/form-data">
 	
 		Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="text" name="Name" disabled="disabled" value="<%= olduser.getUsername() %>" > <br><br>
 		Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="Email" placeholder="E-Mail" value="<%= olduser.getUseremail() %>"> <br><br>
 		Contact: &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="Contact" placeholder="Contact" value="<%= olduser.getUsercontact() %>">
 		 <br><br>
-	
-		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image" value="<%= olduser.getUserimage() %>">  <p style="font-size: 12px; color: red">Please Upload your Picture**</p>
+
+		<p id="img"> Image: &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <input type="file" name="Image" value="<%= olduser.getUserimage() %>" >  <p style="font-size: 12px; color: red">Please Upload your Picture**</p>
 		</p> <br>
 		
 		Enter Password to Update Details: &nbsp; &nbsp;<input id="password" type="text" placeholder="Enter Your Password....." name="Password" > <br> <br> <br>
 		
 		<section style="margin-left: 90px;">
 		
-		<% String msg = (String)request.getAttribute("msg"); %>	
 		
-		<button onclick="javascript:display('${msg}');" name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
-		<button name="button" value="cancel">cancel</button> <br> 
+		
+		<button onclick="javascript:display(<%= olduser.getUserid() %>);" name="button">Register</button> &nbsp;&nbsp;&nbsp;&nbsp;
+		<button  name="button" value="cancel">cancel</button> <br> 
 		
 		</section>
 		
-		
+		<% String msg = (String)request.getAttribute("msg"); %>	
 		<%if(msg != null)
 		{ %>
-			<h4 onseeked="javascript:display('${msg}');" style="color: red; padding-left: 140px;"><%= msg %></h4>
+			<h4 style="color: red; padding-left: 140px;"><%= msg %></h4>
 			
 			<%} %>
 		
 		
-		
-	</from>
+		</form>
+	
 	</div>
 
 
 <script type="text/javascript">
 
-function display(msg)
+function display(a)
 {
-	if(msg != null)
-		{
-		alert("Invalid Details.... :-( Please Update Your Details Once Again and Give Correct Password to Proceed")
-		}
+    
+	alert(`User ID ${a} is Updated Successfully`)
+		
 }
 
 </script>
