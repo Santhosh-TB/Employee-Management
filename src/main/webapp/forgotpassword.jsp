@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Sing-In</title>
+<title>Forgot-Password</title>
 
 <style>
 
@@ -41,6 +41,13 @@ transform: scale(1.5, 1.5);
 transition: 0.5s;
 }
 
+section{
+
+text-align: left;
+padding-left: 70px;
+}
+
+
 </style>
 
 
@@ -51,28 +58,27 @@ transition: 0.5s;
 <body>
 
 <div>
-	<h1>Sign-In Form</h1> <br></br>
+	<h1>Forgot Password Form</h1> <br></br>
 	
-	<form action="userlogin" method="post">
+	<form action="forgot" method="post">
 		
-		E-mail: &nbsp; &nbsp; &nbsp; <input type="text" placeholder="Enter Your E-Mail" name="Email"> <br><br>
+		<section>
+		E-mail: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="E-Mail" name="Email"> <br><br>
+		
+		Contact No.: &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="Contact No." name="Contact"> <br><br>
 	
-		Password: &nbsp; <input type="password" placeholder="Enter Your Password" name="Password"> <br><br><br>
+		New Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="New Password" name="New Password"> <br><br>
+		
+		Conform Password: &nbsp; <input type="password" placeholder="Conform Password" name="Conform Password"> <br><br><br>
+		</section>
 		
 		<button name="button">SignIn</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		<button name="button" value="cancel">cancel</button>
 		
 		<% String msg = (String)request.getAttribute("msg"); 
 		if(msg != null)
-		{ 
-		
-			if(msg != "Password Changed SuccessFully............"){
-		%>
+		{ %>
 			<h4 style="color: red;"><%= msg %></h4>
-			<button style="background-color: black;" name="button" formaction="forgotpassword.jsp">Forgot Password</button> <%} 
-			
-			else { %>
-			<h4 style="color: red;"><%= msg %></h4> <%} %>
 			
 		<% }%>
 

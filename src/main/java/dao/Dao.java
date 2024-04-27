@@ -214,6 +214,23 @@ public class Dao
 	}
 	
 	
+	public int updatePassword(Dto user, String p) throws ClassNotFoundException, SQLException
+	{ 
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement("update user set userpassword = ? where userid =?");
+
+		pst.setString(1, p);
+		
+		pst.setInt(2, user.getUserid());	
+		
+		int res = pst.executeUpdate();
+		return res;	
+	
+	}
+	
+	
+	
+	
 	public int updateUser(Dto user) throws ClassNotFoundException, SQLException
 	{ 
 		Connection con = getConnection();

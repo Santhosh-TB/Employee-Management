@@ -37,8 +37,8 @@ width: 350px;
 padding: 50px;
 background-color: white;
 border-radius: 15px;
-margin-left: 35%;
-margin-top: 16%;
+margin-left: 15%;
+margin-top: 12%;
 text-align: center;
 }
 </style>
@@ -49,6 +49,7 @@ text-align: center;
 <body>
 
 <div>
+<img src="avatar.png" style="height: 100px; width: 100px;">
 <h1>Welcome to User Page</h1> <br>
 <button> <a href="Signup.jsp"> Sign-Up </a> </button> &nbsp;&nbsp;&nbsp;
 <button> <a href="Signin.jsp"> Sign-In </a> </button>
